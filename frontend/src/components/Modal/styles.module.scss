@@ -1,0 +1,77 @@
+.overlay{
+    background: rgba(242, 243, 245, 0.8);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container{
+        background: #EBF1FF;
+        width: 100%;
+        max-width: 400px;
+        padding: 2rem 3rem;
+        border-radius: 5px;
+        box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        position: relative;
+
+        header{
+
+            img{
+                width:100px;
+                height:100px;
+            }
+            // font-size:  8.75rem;
+            // font-weight: 600;
+            // color: var(--blue);
+            // background: url('/check.svg') no-repeat center;
+            // background-size: contain;
+        }
+        
+        strong {
+            font-size:  2rem;
+            color: #000;
+
+        }
+        p{
+            font-size: 1rem;
+            color: #000;
+            margin-top: 0.25rem;
+        }
+
+            button{
+                background: transparent;
+                border: 0;
+
+                width: 2.5rem;
+                height: 2.5rem;
+
+                position: absolute;
+                right: 0.5rem;
+                top: -0.5rem;
+
+                font-size: 0;
+
+                img{
+                    position: absolute;
+                        
+                    background: transparent;
+                    border: 0;
+                    font-size: 0;
+
+                    width: 2.5rem;
+                    height: 2.5rem;
+                }
+            }
+    
+            
+        
+    }
+
+}
+

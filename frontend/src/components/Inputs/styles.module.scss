@@ -1,0 +1,41 @@
+.floatLabel{
+    display: flex;
+    flex-direction: column;
+    min-width: 350px;
+
+    position: relative;
+
+    margin-top: 0.625rem;
+
+    input{
+        width: 24rem;
+        height: 3.5rem;
+        padding: 14px 16px 0 10px;
+        outline: 0;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background: #fff;
+    }
+
+    label{
+        font-family: Nunito, sans-serif;
+        padding: 0 19px;
+        margin: -7px;
+        color: #888;
+        pointer-events: none;
+
+        position: absolute;
+        transform: translate(0, 26px) scale(1);
+
+        transform-origin: top left;
+        transition: all 0.2s ease-out;
+
+        &:focus-within{
+            transform: translate(0, 12px) scale(0.75);
+        }
+    }
+
+    .Active{
+        transform: translate(0, 12px) scale(0.75);
+    }
+}
