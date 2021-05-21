@@ -2,20 +2,22 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Sidebar } from '../../components/Sidebar/index';
 import { isAuthenticated } from '../../components/auth/auth';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import axios from 'axios';
 
 import style from './PerfilEdit.module.scss';
 
-function initialState(){
-    return { new_name: '', new_sobrenome: '', new_email: '', new_selectOption: '', new_selectOptionMonth: '', new_selectOptionYear: ''}
-}
-
 const Perfil = () => {
+
+    let history = useHistory();
 
     function initialState(){
         return { new_name: '', new_sobrenome: '', new_email: '', new_selectOption: '', new_selectOptionMonth: '', new_selectOptionYear: ''}
+    }
+
+    function atualizaValues(){
+        return { name: '', sobrenome: '', email: '' }
     }
 
     const [values, setvalues] = useState(initialState);
@@ -26,10 +28,12 @@ const Perfil = () => {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
+    const [atualiza, setAtualiza] = useState(atualizaValues);
+
     useEffect(() => {
         if(count){
             async function buscaDados(){
-                axios.get('http://localhost:5000/api/cadastro/' + isAuthenticated())
+                axios.get(`http://localhost:5000/api/cadastro/${isAuthenticated()}`)
                     .then(async(response) => {
                         const dados = await response.data.message
                         console.log(dados);
@@ -84,25 +88,53 @@ const Perfil = () => {
         return anos;
     };
 
-    function Salvar(props){
+    async function Salvar(){
 
-        console.log("Entrando no salvar");
+        if(values.new_name != name && values.new_name != ""){
+            atualiza.name = values.new_name;
+        }else if(values.new_name == "" || values.new_name == name){
+            atualiza.name = name;
+        }
 
-        values.new_name = name
-        console.log(name);
+        if(values.new_sobrenome != sobrenome && values.new_sobrenome != ""){
+            atualiza.sobrenome = values.new_sobrenome;
+        }else if(values.new_sobrenome == "" || values.new_sobrenome == sobrenome){
+            atualiza.sobrenome = sobrenome
+        }
 
-        ReactDOM.render(<Perfil />, document.getElementById('container'));
+        if(values.new_email != email && values.new_email != ""){
+            atualiza.email = values.new_email;
+        }else if(values.new_email == "" || values.new_email == email){
+            atualiza.email = email;
+        }
 
-        
-    
+        console.log(atualiza.name);
+        console.log(atualiza.sobrenome);
+        console.log(atualiza.email);
+
+        let dados = {
+            nome_pessoa: atualiza.name,
+            sobrenome: atualiza.sobrenome,
+            email: atualiza.email,
+            senha: senha,
+            data_nascimento: dataNascimento
+        }
+
+        console.log(dados);
+
+        axios.put(`http://localhost:5000/api/cadastro/${isAuthenticated()}`, dados)
+            .then((response) => {
+                console.log(response.data.message);
+            });
+
+        console.log("-------------------------");
+
     }
 
     function onSubmit(event){
         event.preventDefault();
 
-        // alert(values.new_name);
-
-        Salvar();
+        Salvar(values);
         
     }
 

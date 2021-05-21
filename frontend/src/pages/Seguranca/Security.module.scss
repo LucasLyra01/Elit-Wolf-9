@@ -46,34 +46,53 @@
         height: 25.313rem;
         border-radius: 0.625rem;
 
-        .form{
+        .tips{
+           
+            display: flex;
+
+            .info{
+                display: inline-block;
+
+                img{
+                    margin: 1.25rem 1.25rem 0 1.875rem;
+                }
+            }
+
+            .text{
+               
+                p{
+                    span{
+                        color: var(--dark-blue);
+                        font-weight: 600;
+                        font-size: 1.25rem;
+
+                        display: block;
+                    }
+
+                    font-size: 1rem;
+                }   
+            }
+        }
+            
+            .inputs{
+
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: initial;
-
-            margin-left: 3.125rem;
-
-        }
-
-        .buttons{
-
-            display: flex;
-            flex-direction: row;
             align-items: center;
-            justify-content: center;
-            
-            button{
-                width: 17.5rem;
-                height: 3.75rem;
-                margin: 1.25rem;
 
-            }
-            .drop{
-                background: #FF0000;
+            input{
+                margin-top: 0.625rem;
+                width: 24rem;
+                height: 3.5rem;
+                padding: 2px 16px 0 10px;
+                outline: 0;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                background: #fff;
             }
         }
     }
-            
-        
+
+
 }

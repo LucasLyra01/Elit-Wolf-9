@@ -4,6 +4,7 @@ import { Sidebar } from '../../components/Sidebar/index';
 import style from './Dashboard.module.scss';
 
 const Dashboard = () => {
+
     return(
         <div>
             <div>

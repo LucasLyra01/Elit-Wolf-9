@@ -1,0 +1,28 @@
+.header{
+    margin: 20px;
+    width: 44.375rem;
+    height: 5rem;
+
+    border-radius: 10px;
+    background: #fff;
+    color: black;
+    
+    h1{
+        margin-top: 10px; 
+        font-size: 1.25rem;          
+    }
+
+    h1, h2{
+        font-family: Viga;
+        margin-left: 20px;
+    }
+    span{
+        color: var(--dark-blue);
+    }
+
+    h2{
+        color: #979899;
+        font-size: 1rem; 
+    }
+    
+}

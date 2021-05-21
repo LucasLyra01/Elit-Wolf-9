@@ -113,8 +113,7 @@ const Cadastro = () => {
 
           <div className={style.floatLabel}>
             <input
-            
-            id="username"
+              id="username"
               type="text"
               placeholder="Digite seu nome"
               name="username"
