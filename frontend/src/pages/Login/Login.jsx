@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { Route, Redirect, BrowserRouter, useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import { isAuthenticated, loginToken } from '../../components/auth/auth';

@@ -52,21 +52,33 @@
             justify-content: center;
             align-items: initial;
 
+            margin-top: 2.5rem;
             margin-left: 3.125rem;
+            line-height: 0.625rem;
+
+            p{
+                font-size: 1rem;
+                font-weight: 700;
+
+                span{
+                    color: #A8A6A6;
+                }
+            }
 
         }
 
-        .buttons{
-
+      .buttons{
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: center;
+            margin-top: 2rem;
             
             button{
                 width: 17.5rem;
                 height: 3.75rem;
                 margin: 1.25rem;
+                box-shadow: 0px 2.92276px 2.92276px rgba(0, 0, 0, 0.25);
 
             }
             .drop{

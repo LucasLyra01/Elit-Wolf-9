@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Sidebar } from '../../components/Sidebar/index';
 import { isAuthenticated } from '../../components/auth/auth';
-import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -9,6 +8,92 @@ import style from './Security.module.scss';
 import { Header } from '../../components/Header';
 
 const Seguranca = () => {
+    
+    function initialState(){
+        return {
+            currentPassword: '',
+            newPassword: '',
+            confirmPassword: ''
+        }
+    }
+
+    const [values, setValues] = useState(initialState);
+    const [count, setCount] = useState(true);
+    const [name, setName] = useState('');
+    const [dataNascimento, setDataNascimento] = useState('');
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+
+    useEffect(() => {
+        if(count){
+            async function buscaDados(){
+                axios.get(`http://localhost:5000/api/cadastro/${isAuthenticated()}`)
+                    .then(async(response) => {
+                        const dados = await response.data.message
+                        // console.log(dados);
+                        setName(dados.nome_pessoa);
+                        setEmail(dados.email);
+                        setDataNascimento(dados.data_nascimento);
+                        setSenha(dados.senha);
+                        // console.log("Dados coletados");
+                        setCount(false);
+                });
+            }
+            buscaDados();
+        }
+    });
+
+    async function alterarSenha(){
+        
+        if(values.currentPassword === senha){
+
+            if(values.newPassword !== "" || values.confirmPassword !== ""){
+                if(values.newPassword === values.confirmPassword){
+                    
+                    let dados = {
+                        nome_pessoa: name,
+                        email: email,
+                        data_nascimento: dataNascimento,
+                        senha: values.newPassword
+                    }
+    
+                    axios.put(`http://localhost:5000/api/cadastro/${isAuthenticated()}`, dados)
+                        .then((response) => {
+                            console.log(response.data.status);
+                            console.log(response.data.message);
+                    });
+                }
+            }else{
+                console.log("Campos vazios");
+            }
+
+            
+
+
+        }else{
+            console.log("Atual senha incorreta");
+        }
+
+
+    }
+
+    function onSubmit(event){
+        event.preventDefault();
+
+        alterarSenha(values);
+    }
+
+    function onChange(event){
+        const { value, name } = event.target;
+
+        setValues({
+            ...values,
+            [name]: value,
+        });
+    }
+
+    
+
             
     return(
         <div>
@@ -22,11 +107,6 @@ const Seguranca = () => {
                     <Header title={'Segurança'} text={'Clique em salvar para alterar sua senha'}/>
                 </div>
 
-                {/* <div className={style.header}>
-                    <h1>Segurança</h1>
-                    <h2>Clique em salvar para alterar sua senha </h2>
-                </div> */}
-
                 <div className={style.content}>
                     <div className={style.tips}>
 
@@ -35,11 +115,6 @@ const Seguranca = () => {
                         </div>
 
                         <div className={style.text}>
-                            {/* <h1>Fica a dica: </h1>
-                            <p>Para uma senha mais forte e segura recomendamos o uso de
-                                letras minúsculas e maiúsculas, números e caracteres especiais, como !@#)
-                            </p> */}
-
                             <p>
                                 <span>Fica a dica:</span>
                                 Para uma senha mais forte e segura recomendamos o uso de letras minúsculas e maiúsculas, números e caracteres especiais, como !@#)
@@ -48,17 +123,43 @@ const Seguranca = () => {
                     </div>
 
                     <div className={style.inputs}>
-                        <input id='currentPassword' placeholder='Senha atual'/>
-                        <input id='newPassword' placeholder='Nova senha'/>
-                        <input id='confirmPassword' placeholder='Confirmar senha'/>
+                        <form onSubmit={onSubmit}>  
 
-                        <button>Salvar</button>
+                            <input 
+                                placeholder='Senha atual'
+                                id='currentPassword' 
+                                type='password'
+                                name='currentPassword'
+                                onChange={onChange}
+                                value={values.currentPassword}
+                                />
+                            <input 
+                                placeholder='Nova senha'
+                                id='newPassword' 
+                                type='password'
+                                name='newPassword'
+                                onChange={onChange}
+                                value={values.newPassword}
+                                />
+                        
+                            <input 
+                                placeholder='Confirmar senha'
+                                id='confirmPassword'
+                                type='password'
+                                name='confirmPassword'
+                                onChange={onChange}
+                                value={values.confirmPassword}
+                                />
+                            
+                            <button type='submit'>Salvar</button>
+                        </form>
+
                     </div>
                 </div>
             </div>
 
            
-        // </div>
+        </div>
 
     );
 }

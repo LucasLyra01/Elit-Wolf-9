@@ -1,39 +1,30 @@
+require('dotenv').config({
+    path: '.env'
+});
 
-// const cataloga = require('../backend/robo/index');
 const express = require('express');
 const cors = require('cors');
 const mongodb = require('./infra/mongodb');
-const teste = require('./export');
 const app = express();
 
-console.log(teste);
+const catalogacao = require('../../robo/index');
 
-// async function exportado(){
-//     return await dados;
-//     console.log(dados);
-// }
-
-// (async () => {
-//     const p = new Promise((resolve, reject) => {
-//         try {
-//             resolve(exportado())
-//         } catch (error) {
-//             reject(error)
-//         }
-//     });
+try {
+    catalogacao();
+    console.log(catalogacao);
+} catch (error) {
     
-//     console.log(p);
-// })();
+}
+
 
  
 const port = 5000;
-const hostname = 'localhost';
+const hostname = '0.0.0.0';
 
 app.use(cors());
 
 const cadastroRoutes = require('./routes/cadastro-routes');
 const cadastroGoogleRoutes = require('./routes/cadastro-google-routes');
-const { values } = require('../backend/robo/index');
 
 app.use(express.urlencoded({
     extended: true

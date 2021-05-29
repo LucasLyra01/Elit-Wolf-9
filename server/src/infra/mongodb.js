@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://root:root@localhost:27017/projeto1?authSource=admin', {useNewUrlParser: true, useUnifiedTopology: true});
+const srtConnection = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@banco.saisu.mongodb.net/projeto1?retryWrites=true&w=majority`;
+
+mongoose.connect(srtConnection, {useNewUrlParser: true, useUnifiedTopology: true});
+
 
 const db = mongoose.connection;
 

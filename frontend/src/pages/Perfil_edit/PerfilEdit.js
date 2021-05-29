@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import { Sidebar } from '../../components/Sidebar/index';
 import { isAuthenticated } from '../../components/auth/auth';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
 import style from './PerfilEdit.module.scss';
+import { Header } from '../../components/Header';
 
 const Perfil = () => {
-
-    let history = useHistory();
 
     function initialState(){
         return { new_name: '', new_sobrenome: '', new_email: '', new_selectOption: '', new_selectOptionMonth: '', new_selectOptionYear: ''}
@@ -36,57 +34,19 @@ const Perfil = () => {
                 axios.get(`http://localhost:5000/api/cadastro/${isAuthenticated()}`)
                     .then(async(response) => {
                         const dados = await response.data.message
-                        console.log(dados);
+                        // console.log(dados);
                         setName(dados.nome_pessoa);
                         setEmail(dados.email);
                         setDataNascimento(dados.data_nascimento)
                         setSobrenome(dados.sobrenome)
                         setSenha(dados.senha);
-                        console.log("Dados coletados");
+                        // console.log("Dados coletados");
                         setCount(false);
                 });
             }
             buscaDados();
         }
     });
-
-    const ArrayData = {
-        ArrayMeses: [
-          "Janeiro",
-          "Fevereiro",
-          "Março",
-          "Abril",
-          "Maio",
-          "Junho",
-          "Julho",
-          "Agosto",
-          "Setembro",
-          "Outubro",
-          "Novembro",
-          "Dezembro",
-        ],
-    };
-    
-    function funcDias() {
-        const dias = [];
-        // dias.push('Dia')
-        for (let index = 1; index <= 31; index++) {
-          dias.push(index);
-        }
-    
-        return dias;
-    };
-    
-    function funcAnos() {
-        const anos = [];
-    
-        for (let index = 1921; index <= 2021; index++) {
-          anos.push(index);
-        }
-    
-        anos.reverse();
-        return anos;
-    };
 
     async function Salvar(){
 
@@ -158,12 +118,17 @@ const Perfil = () => {
 
             <div>
                 <div className={style.container} id='container'>
-                    <div className={style.quadrado}>
-                        <h1>Perfil</h1>
+
+                <div>
+                    <Header title={'Perfil'} text={'Clique em salvar para alterar seus dados ou cancelar para voltar '}/>
+                </div>
+
+                    <div className={style.content}>
+                        
                         <form onSubmit={onSubmit}>
                             <div className={style.floatLabel}>
                                 <input 
-                                    className={style.upper} 
+                                    // className={style.upper} 
                                     placeholder={name} 
                                     id='new_name' 
                                     type='text' 
@@ -173,7 +138,7 @@ const Perfil = () => {
                             </div>
                             <div className={style.floatLabel}>
                                 <input 
-                                    className={style.upper} 
+                                    // className={style.upper} 
                                     placeholder={sobrenome ? sobrenome : 'Definir Sobrenome'} 
                                     id='new_sobrenome' 
                                     type='text' 
@@ -192,60 +157,21 @@ const Perfil = () => {
                             </div>
 
                             <div className={style.floatLabel}>
-                                <label>{dataNascimento ? 'Data de nascimento ' + dataNascimento : 'Definir data de nascimento'}</label>
+                                <input 
+                                    // placeholder={numero ? numero : '(99) 99999-9999'}
+                                    placeholder = '(99) 99999-9999'
+                                    id='new_numero' 
+                                    type='text'
+                                    name='new_numero' 
+                                    onChange={onChange} 
+                                    // value={values.new_email}
+                                    />
                             </div>
 
-                            <div className={style.dropdown}>
-                                <div>
-                                    <select
-                                        className={style.buttonSelect}
-                                        name="new_selectOption"
-                                        onChange={onChange}
-                                        value={values.new_selectOption}
-                                    >
-                                        <option selected hidden>
-                                        Dia
-                                        </option>
-                                        {funcDias().map((data) => (
-                                        <option>{data}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                                <div>
-                                    <select
-                                        className={style.buttonSelect}
-                                        name="new_selectOptionMonth"
-                                        onChange={onChange}
-                                        value={values.new_selectOptionMonth}
-                                    >
-                                        <option selected hidden>
-                                        Mês
-                                        </option>
-                                        {ArrayData.ArrayMeses.map((data) => (
-                                        <option>{data}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                                <div>
-                                    <select
-                                        className={style.buttonSelect}
-                                        name="new_selectOptionYear"
-                                        onChange={onChange}
-                                        value={values.new_selectOptionYear}
-                                    >
-                                        <option selected hidden>
-                                        Ano
-                                        </option>
-                                        {funcAnos().map((data) => (
-                                        <option>{data}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                            </div>
-                            <div className={style.botoes}>
-                                <button className={style.salvar} type="submit">Salvar</button>
+                            <div className={style.buttons}>
+                                <button className={style.save} type="submit">Salvar</button>
                                 <Link to='/profile'>
-                                    <button className={style.cancelar}>Cancelar</button>
+                                    <button className={style.cancel}>Cancelar</button>
                                 </Link>
                             </div>
                         </form>

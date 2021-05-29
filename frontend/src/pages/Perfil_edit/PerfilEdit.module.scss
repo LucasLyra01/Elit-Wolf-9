@@ -16,98 +16,108 @@
 
     // border: 1px solid red;
 
-    .quadrado{
-        padding: 40px;
-        border-radius: 15px;
-        // border: 1px solid red;
-        background-color: rgba(255, 255, 255, 0.658);
+    .content{
+        background: #EBF1FF;
+        width: 44.375rem;
+        height: 25.313rem;
+        border-radius: 0.625rem; 
+
+        form{
+            margin-top: 1.875rem;
+        }
+
+        .floatLabel{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            // align-items: center;
+            // min-width: 350px;
+            
+            position: relative;
+            
+            margin-top: 0.625rem;
+            margin-left: 1.875rem;
+            
+            // border: 1px solid red;
+            
+            // .upper{
+            //     text-transform: capitalize;
+            // }
         
-    }
+            label{
+                color: black;
+                font-size: 16px;
+                font-family: Nunito;
+            }
+            
+            input{
+                font-size: 1rem;
+                width: 20.938rem;
+                height: 3.125rem;
+                padding: 2px 16px 0 10px;
+                outline: 0;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                background: #fff;
+                
+            }
+        }
 
-    h1{
-        color: black;
-    }
+        
+        // .dropdown {
+        // display: flex;
+        // // text-align: left;
+        // // justify-content: space-between;
+
+        // margin-top: 10px;
+        // margin-right: 20px;
     
-    button {
-        margin: 10px;
-        padding: 0;
+        // border: 1px solid red;
+
+        //     .buttonSelect {
+        //         border-radius: 5px;
+        //         height: 4.11rem;
+        //         width: 7.764rem;
+        //         padding: 8px;
+        //         margin-right: 19.73px;
+            
+        //         font-size: 1rem;
+        //         color: #888;
+        //         font-family: Nunito, sans-serif;
+
+        //         option {
+        //             font-size: 1rem;
+        //             max-width: 1rem;
+        //             border-radius: 10px;
+        //         }
+        //     }
+        // }
+
+
+        .buttons{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2rem;
+
+            button{
+                width: 17.5rem;
+                height: 3.75rem;
+                margin: 1.25rem;
+                box-shadow: 0px 2.92276px 2.92276px rgba(0, 0, 0, 0.25);
+
+                font-size: 1.25rem;
+            }
+
+            .save{
+                background: var(--dark-blue);
+            }
+
+            .cancel{
+                background: #000;
+            }
+        }
     }
-}
 
-.floatLabel{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    // align-items: center;
-    min-width: 350px;
-    
-    position: relative;
-    
-    margin-top: 0.625rem;
-    
-    // border: 1px solid red;
-    
-    .upper{
-        text-transform: capitalize;
-    }
-
-    label{
-        color: black;
-        font-size: 16px;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    }
-    
-    input{
-        font-size: 1.8rem;
-        width: 28rem;
-        height: 4.11rem;
-        padding: 2px 16px 0 10px;
-        outline: 0;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        background: #fff;
-    }
-}
-
-.dropdown {
-    display: flex;
-    // text-align: left;
-    // justify-content: space-between;
-
-    margin-top: 10px;
-    margin-right: 20px;
-  
-    // border: 1px solid red;
-}
-.buttonSelect {
-    border-radius: 5px;
-    height: 4.11rem;
-    width: 7.764rem;
-    padding: 8px;
-    margin-right: 19.73px;
-
-    font-size: 1rem;
-    color: #888;
-    font-family: Nunito, sans-serif;
-}
-
-.buttonSelect option {
-    font-size: 1rem;
-    max-width: 1rem;
-    border-radius: 10px;
-}
-
-.botoes{
-    display: flex;
-    
-    .salvar{
-        background-color: green;
-    }
-    .cancelar{
-        background-color: black;
-    }
-}
-
-.error{
-    border: 3px solid red;
 }

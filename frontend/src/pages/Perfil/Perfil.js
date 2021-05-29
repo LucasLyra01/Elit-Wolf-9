@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Sidebar } from '../../components/Sidebar/index';
-import { isAuthenticated } from '../../components/auth/auth';
-import { Link } from 'react-router-dom';
+import { isAuthenticated, logout } from '../../components/auth/auth';
+import { Link, useHistory } from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -10,6 +10,8 @@ import { Header } from '../../components/Header';
 
 const Perfil = () => {
 
+    let history = useHistory();
+
     const [count, setCount] = useState(true);
 
     const [name, setName] = useState('');
@@ -17,6 +19,7 @@ const Perfil = () => {
     const [email, setEmail] = useState('');
     const [sobrenome, setSobrenome] = useState('');
     const [numero, setNumero] = useState('');
+    const [deleteAccount, setDeleteAccount] = useState(false);
 
     useEffect(() => {
         if(count){
@@ -24,7 +27,7 @@ const Perfil = () => {
                 await axios.get('http://localhost:5000/api/cadastro/' + isAuthenticated())
                     .then(async (response) => {
                         const dados = await response.data.message
-                        console.log(dados);
+                        // console.log(dados);
                         setName(dados.nome_pessoa);
                         setSobrenome(dados.sobrenome);
                         setEmail(dados.email);
@@ -36,6 +39,21 @@ const Perfil = () => {
             buscaDados();
         }
     });
+
+    function deletarConta(){
+
+        axios.delete(`http://localhost:5000/api/cadastro/${isAuthenticated()}`)
+            .then(async (response) => {
+                if(response.data.status == 'ok'){
+                    console.log(response.data.status);
+                    console.log(response.data.message);
+                    alert(response.data.message);
+                    await logout();
+                    history.push('/');
+                }
+            });
+
+    }
 
     let data = dataNascimento.split('/');
 
@@ -63,14 +81,19 @@ const Perfil = () => {
                         
                     </div>
 
+                    {/* <div className={style.photo}>
+
+                    </div> */}
+
                         <div className={style.buttons}>
                             <Link to='profile_edit'>
                                 <button>Editar</button>
                             </Link>
 
-                            <button className={style.drop}>
+                            <button className={style.drop} onClick={() => setDeleteAccount(true)}>
                                 Excluir conta
                             </button>
+                            {deleteAccount ? deletarConta() : null}
                         </div>
                 </div>
             </div>

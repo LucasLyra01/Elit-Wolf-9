@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
 import Google from '../../components/ButtonGoogle/Google';
 import axios from 'axios';
