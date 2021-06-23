@@ -1,11 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Sidebar } from '../../components/Sidebar/index';
-import { isAuthenticated } from '../../components/auth/auth';
-
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import style from './Security.module.scss';
-import { Header } from '../../components/Header';
+
+import { isAuthenticated } from '../../components/auth/auth';
+
+import TextField from '@material-ui/core/TextField';
+
+import Button from "../../components/CustomButtons/Button";
+import Card from "../../components/Card/Card.js";
+import CardHeader from "../../components/Card/CardHeader.js";
+import CardIcon from "../../components/Card/CardIcon.js";
+import CardBody from "../../components/Card/CardBody.js";
+import CardFooter from "../../components/Card/CardFooter.js";
+import GridItem from "../../components/Grid/GridItem.js";
+import GridContainer from "../../components/Grid/GridContainer.js";
+
+import * as RiIcons from 'react-icons/ri';
+import * as IoIcons from 'react-icons/io5';
 
 const Seguranca = () => {
     
@@ -96,70 +109,149 @@ const Seguranca = () => {
 
             
     return(
-        <div>
-            <div>
-                <Sidebar text={'dashboard'}/>
-            </div>
 
-            <div className={style.container}>
+        <div className={style.container}>
+            <GridContainer>
+                <GridItem xs={12} sm={12} md={12}>
+                    <form onSubmit={onSubmit}>
+                        <Card>
+                            <CardHeader stats icon>
+                                <CardIcon color='danger'>
+                                    <RiIcons.RiLockPasswordLine />
+                                </CardIcon>
+                                <div className={style.textCard}>
+                                    <h2>Segurança</h2>
+                                    <h6>Para uma senha mais forte e segura recomendamos o uso de letras minúsculas e maiúsculas, números e caracteres especiais, como !@#</h6>
+                                </div>
+                            </CardHeader>
+                            <CardBody>
+                                <GridContainer>
+                                    <GridItem xs={12} sm={12} md={12}>
+                                        {/* <CardIcon color='warning'>
+                                            <IoIcons.IoWarningOutline />
+                                        </CardIcon> */}
+                                        <TextField 
+                                            label='Senha atual'
+                                            variant='standard'
+                                            margin='normal'
+                                            fullWidth
+                                            id='currentPassword'
+                                            type='password'
+                                            name='currentPassword'
+                                            autoFocus
+                                            onChange={onChange}
+                                            value={values.currentPassword}
+                                        />
+                                    </GridItem>
+                                </GridContainer>
+                                <GridContainer>
+                                    <GridItem xs={12} sm={12} md={12}>
+                                        {/* <CardIcon color='warning'>
+                                            <IoIcons.IoWarningOutline />
+                                        </CardIcon> */}
+                                        <TextField 
+                                            label='Nova senha'
+                                            variant='standard'
+                                            margin='normal'
+                                            fullWidth
+                                            id='newPassword'
+                                            type='password'
+                                            name='newPassword'
+                                            autoFocus
+                                            onChange={onChange}
+                                            value={values.newPassword}
+                                        />
+                                    </GridItem>
+                                </GridContainer>
+                                <GridContainer>
+                                    <GridItem xs={12} sm={12} md={12}>
+                                        {/* <CardIcon color='warning'>
+                                            <IoIcons.IoWarningOutline />
+                                        </CardIcon> */}
+                                        <TextField 
+                                            label='Confirme a senha'
+                                            variant='standard'
+                                            margin='normal'
+                                            fullWidth
+                                            id='confirmPassword'
+                                            type='password'
+                                            name='confirmPassword'
+                                            autoFocus
+                                            onChange={onChange}
+                                            value={values.confirmPassword}
+                                        />
+                                    </GridItem>
+                                </GridContainer>
+                            </CardBody>
+                            <CardFooter chart className={style.footer}>
+                                <button type='submit'>Salvar</button>
+                            </CardFooter>
+                        </Card>
+                    </form>
+                </GridItem>
+            </GridContainer>
+        </div>
 
-                <div>
-                    <Header title={'Segurança'} text={'Clique em salvar para alterar sua senha'}/>
-                </div>
+        // <div>
+        //     <div className={style.container}>
 
-                <div className={style.content}>
-                    <div className={style.tips}>
+        //         <div>
+        //             <Header title={'Segurança'} text={'Clique em salvar para alterar sua senha'}/>
+        //         </div>
 
-                        <div className={style.info}>
-                            <img src={'/info.svg'} alt='Info'/>
-                        </div>
+        //         <div className={style.content}>
+        //             <div className={style.tips}>
 
-                        <div className={style.text}>
-                            <p>
-                                <span>Fica a dica:</span>
-                                Para uma senha mais forte e segura recomendamos o uso de letras minúsculas e maiúsculas, números e caracteres especiais, como !@#)
-                            </p>
-                        </div>
-                    </div>
+        //                 <div className={style.info}>
+        //                     <img src={'/info.svg'} alt='Info'/>
+        //                 </div>
 
-                    <div className={style.inputs}>
-                        <form onSubmit={onSubmit}>  
+        //                 <div className={style.text}>
+        //                     <p>
+        //                         <span>Fica a dica:</span>
+        //                         Para uma senha mais forte e segura recomendamos o uso de letras minúsculas e maiúsculas, números e caracteres especiais, como !@#)
+        //                     </p>
+        //                 </div>
+        //             </div>
 
-                            <input 
-                                placeholder='Senha atual'
-                                id='currentPassword' 
-                                type='password'
-                                name='currentPassword'
-                                onChange={onChange}
-                                value={values.currentPassword}
-                                />
-                            <input 
-                                placeholder='Nova senha'
-                                id='newPassword' 
-                                type='password'
-                                name='newPassword'
-                                onChange={onChange}
-                                value={values.newPassword}
-                                />
+        //             <div className={style.inputs}>
+        //                 <form onSubmit={onSubmit}>  
+
+        //                     <input 
+        //                         placeholder='Senha atual'
+        //                         id='currentPassword' 
+        //                         type='password'
+        //                         name='currentPassword'
+        //                         onChange={onChange}
+        //                         value={values.currentPassword}
+        //                         />
+        //                     <input 
+        //                         placeholder='Nova senha'
+        //                         id='newPassword' 
+        //                         type='password'
+        //                         name='newPassword'
+        //                         onChange={onChange}
+        //                         value={values.newPassword}
+        //                         />
                         
-                            <input 
-                                placeholder='Confirmar senha'
-                                id='confirmPassword'
-                                type='password'
-                                name='confirmPassword'
-                                onChange={onChange}
-                                value={values.confirmPassword}
-                                />
+        //                     <input 
+        //                         placeholder='Confirmar senha'
+        //                         id='confirmPassword'
+        //                         type='password'
+        //                         name='confirmPassword'
+        //                         onChange={onChange}
+        //                         value={values.confirmPassword}
+        //                         />
                             
-                            <button type='submit'>Salvar</button>
-                        </form>
+        //                     <button type='submit'>Salvar</button>
+        //                 </form>
 
-                    </div>
-                </div>
-            </div>
+        //             </div>
+        //         </div>
+        //     </div>
 
            
-        </div>
+        // </div>
 
     );
 }

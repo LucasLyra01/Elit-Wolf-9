@@ -1,13 +1,17 @@
 const axios = require('axios');
 
 const data = {
-    "nome_pessoa": "Lucas",
-    "data_nascimento": "09012000",
-    "email": "lucaslyra3@gmail.com",
-    "senha": "teste123"
+    "nome_pessoa":"Acsa",
+    "cpf": "123123132",
+    "data_nascimento": "07/22/2001",
+    "telefone_pessoa": "996059757",
+    "grupo_prioritario": true,
+    "endereco_pessoa": "Rua Acacia Roxa",
+    "email_pessoa": "acsalourenciaalves@gmail.com"
+
 }
 
-axios.put('http://localhost:5000/api/cadastro/60919607c57dcd308c1a5b0b', data).then((response) => {
+axios.get('http://54.94.108.65:5000/api/cadastro').then((response) => {
     console.log(response.data.message);
 });
 

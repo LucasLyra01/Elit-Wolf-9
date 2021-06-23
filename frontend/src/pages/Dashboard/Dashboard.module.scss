@@ -1,14 +1,41 @@
 .container{
-    margin-left: 7rem;
-    height: 100vh;
-    position: relative;
 
-    display: flex;
-    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 20px;
 
-    flex: 1;
-    align-items: center;
-    justify-content: center;
+    .textCard{
+        padding-top: 10px;
+        text-align: left;
+        color: black;
+    }
+
+    a{
+        text-decoration: none;
+        color: black;
+    }
+
+    .textCard{
+        padding-top: 10px;
+        text-align: left;
+        color: black;
+
+        h5, h2{
+            font-family: Viga;
+        }  
+            
+        h5{
+            color: #979899;
+        }
+    }
+
+    .pie{
+        height: 354px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
     .content{
         border: 1px solid red;

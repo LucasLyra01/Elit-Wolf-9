@@ -10,14 +10,9 @@ export function Modal(){
 
         <div className={styles.overlay}>
         <div className={styles.container}>
-            <header><img src='/error.svg'
-            // {
-            //     isOk
-            //     ? '/check.svg'
-            //     : '/error.svg'
-            // }
-            
-            /></header>
+            <header>
+                <img src='/error.svg' alt='ainda nao sei'/>
+            </header>
 
             <strong>Cadastro não realizado
                 {/* {

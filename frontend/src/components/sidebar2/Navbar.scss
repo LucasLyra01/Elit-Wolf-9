@@ -1,0 +1,129 @@
+.navbar {
+    background-color: transparent;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+  
+  .menu-bars {
+    margin-left: 1rem;
+    font-size: 2rem;
+    background: none;
+  }
+  
+  .nav-menu {
+    background-color: #f7f7f7;
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: 850ms;
+    z-index: 10;
+  }
+  
+  .nav-menu.active {
+    left: 0;
+    transition: 350ms;
+  }
+  
+  .nav-text {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    list-style: none;
+    height: 60px;
+  }
+  
+  .nav-text a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 18px;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 4px;
+  }
+  
+  .nav-text a:hover {
+    background-color: #1a83ff;
+  }
+  
+  .nav-menu-items {
+    width: 100%;
+  }
+  
+  .navbar-toggle {
+    background-color: #f2f2f2;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+  
+  span {
+    margin-left: 16px;
+  }
+
+  .exit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 0;
+    padding-bottom: 10px;
+  
+    button{
+      background: transparent;
+      border: 0;
+    }
+  
+    &:hover{
+      filter: 
+          invert(16%) 
+          sepia(63%) 
+          saturate(3770%) 
+          hue-rotate(216deg) 
+          brightness(91%) 
+          contrast(87%);
+      
+      }
+  }
+  
+
+  .btnNavigation{
+    margin: 0;
+    text-align: left;
+    background-color: transparent;
+    color: black;
+  }
+
+  .isActive{
+    position: relative;
+    filter: 
+        invert(16%) 
+        sepia(63%) 
+        saturate(3770%) 
+        hue-rotate(216deg) 
+        brightness(91%) 
+        contrast(87%);
+
+        &::before{
+            content: '';
+            height: 100%;
+            width: 5px;
+            border-radius: 0 5px 5px 0;
+            position: absolute;
+            background: black;
+            top: 0;
+            left: 0;
+            transition:  all 0.3s;
+        }
+
+}

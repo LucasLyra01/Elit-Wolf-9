@@ -1,15 +1,38 @@
 .container{
-    margin-left: 7rem;
-    height: 95vh;
-    position: relative;
 
-    display: flex;
-    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 15px;
 
-    flex: 1;
-    align-items: center;
+    .card{
+        justify-content: center;
+    }
+    
 
-    justify-content: center;
+    .textCard{
+        padding-top: 10px;
+        text-align: left;
+        color: black;
+
+        h5, h2{
+            font-family: Viga;
+        }  
+            
+        h5{
+            color: #979899;
+        }
+    }
+
+    .footer{
+        justify-content: center;
+    }
+    
+    .botaoEditar{
+        border-radius: 20px;
+        background: #1440A2;
+        text-decoration: none;
+
+    }
+
 
     // .header{
     //     margin: 20px;

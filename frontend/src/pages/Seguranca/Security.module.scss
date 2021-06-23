@@ -1,15 +1,41 @@
 .container{
-    margin-left: 7rem;
-    height: 95vh;
-    position: relative;
+    margin-left: 10px;
+    margin-right: 15px;
 
-    display: flex;
-    flex-direction: column;
+    // border: 1px solid red;
 
-    flex: 1;
-    align-items: center;
+    .textCard{
+        padding-top: 10px;
+        text-align: left;
+        color: black;
 
-    justify-content: center;
+        h6, h2{
+            font-family: Viga;
+        }  
+            
+        h6{
+            color: #979899;
+        }
+    }
+
+    .footer{
+        justify-content: center;
+
+        .save{
+            background: var(--dark-blue);
+        }
+
+        .cancel{
+            background: #000;
+        }
+    }
+    
+    .botaoEditar{
+        border-radius: 20px;
+        background: #1440A2;
+        text-decoration: none;
+
+    }
 
     .content{
         background: #EBF1FF;

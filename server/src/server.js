@@ -5,9 +5,8 @@ require('dotenv').config({
 const express = require('express');
 const cors = require('cors');
 const mongodb = require('./infra/mongodb');
+const catalogador = require('../robo/index');
 const app = express();
-
-const catalogacao = require('../../robo/index');
 
 try {
     catalogacao();
@@ -16,15 +15,14 @@ try {
     
 }
 
-
- 
-const port = 5000;
-const hostname = '0.0.0.0';
+const port = process.env.APP_PORT;
+const hostname = process.env.APP_HOSTNAME;
 
 app.use(cors());
 
 const cadastroRoutes = require('./routes/cadastro-routes');
 const cadastroGoogleRoutes = require('./routes/cadastro-google-routes');
+const catalogadosRoutes = require('./routes/catalogados-routes')
 
 app.use(express.urlencoded({
     extended: true
@@ -34,6 +32,7 @@ app.use(express.json());
 
 app.use('/api/cadastro', cadastroRoutes);
 app.use('/api/cadastrogoogle', cadastroGoogleRoutes);
+app.use('/catalogacao', catalogadosRoutes);
 
 app.get('/', (req, res) => {
     res.json({
