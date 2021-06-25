@@ -1,11 +1,7 @@
 import React from 'react';
 import * as GrIcons from 'react-icons/gr';
-import * as AiIcons from 'react-icons/ai';
-import * as IoIcons from 'react-icons/io';
 import * as MdIcons from 'react-icons/md';
 import * as CgIcons from 'react-icons/cg';
-import * as RiIcons from 'react-icons/ri';
-import * as VscIcons from 'react-icons/vsc';
 import * as BsIcons from 'react-icons/bs' 
 
 

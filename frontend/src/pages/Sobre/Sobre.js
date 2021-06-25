@@ -34,10 +34,23 @@ const Sobre = () => {
                             </CardIcon>
                             <div className={style.textCard}>
                                 <h2>Sobre</h2>
-                                <h5>Informações sobre os desenvolvedores</h5>
+                                <h5>Informações sobre o site e os desenvolvedores</h5>
                             </div>
                         </CardHeader>
+                    </Card>
+                    <Card className={style.card}>
+                        <CardHeader stats icon>
+                            
+                        </CardHeader>
                         <CardBody>
+                            <div className={style.textCardAbout}>
+                                <h5>Atualmente o mercado finaceiro está ganhando cada vez mais visibilidade e atraindo novos investidores.
+                                    Com intuito de ajudá-los nasceu a Elite Wolf, uma plataforma que auxilia na elaboração dos seus próprios sinais,
+                                    utilizando um método inovador de catalogação, ela gera uma lista de siniais baseada completamente no andamento do mercado.
+                                    Fazendo com que estes investidores se sintam confiantes e seguros para realizarem suas operações e assim alcançarem a consistência.
+                                    Desejamos muito sucesso para nossos usuários!!
+                                </h5>
+                            </div>
                         </CardBody>
                     </Card>
                 </GridItem>

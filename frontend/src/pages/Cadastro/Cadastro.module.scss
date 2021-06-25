@@ -1,3 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Viga&display=swap');
+
+h1{
+    font-size: 2rem;
+    font-family: Nunito, sans-serif;
+}
+
+.image {
+    background-image: url("../../assets/img/logos/logo_lobo.svg");
+    background-repeat: no-repeat;
+    background-color: #009EC0;
+    background-size: auto;
+    background-position: center;
+    position: center;
+    align-items: center;
+    // border: 1px solid red;
+}
+
+.fundo {
+    background-color: #009EC0;
+}
+
+.campos{
+    background-color: #FFF;
+    border-radius: 5px;
+    height: 55px;
+}
+
+
+.center{
+    text-align: center;
+
+    p{
+        font-weight: 600;
+        font-family: Nunito, sans-serif;
+        font-size: 1.25rem;
+        color: #000;
+        margin-top: 1rem;
+    }
+
+    .link{
+        font-family: Nunito, sans-serif;
+        color: #FFF;
+        text-decoration: none;
+        cursor: pointer;
+    
+        // border: 1px solid red;
+    }
+
+
+}
+
 .container {
     height: 100vh;
     max-width: 992px;

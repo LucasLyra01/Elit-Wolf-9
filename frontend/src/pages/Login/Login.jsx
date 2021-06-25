@@ -5,9 +5,7 @@ import axios from "axios";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Link from "@material-ui/core/Link";
-import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -168,11 +166,11 @@ const Login = () => {
             <Grid container>
               <Grid item xs className={stylescss.center}>
                 <p>
-                    Esqueceu sua senha?
+                  Esqueceu sua senha?
                 </p>
                 <p>
-                    Ainda não possui senha?{" "}
-                    <Link className={stylescss.link}>Cadastre-se</Link>
+                  Ainda não possui senha?{" "}
+                  <a href='/cadastro' className={stylescss.link}>Cadastre-se</a>
                 </p>
               </Grid>
             </Grid>

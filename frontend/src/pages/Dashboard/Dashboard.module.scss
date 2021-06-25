@@ -14,6 +14,24 @@
         color: black;
     }
 
+    .cardBody{
+        height: 325px;
+
+    }
+
+    .color{
+        background-color: yellow;
+    }
+
+    .cardAvatar{
+        background-color: rgb(189, 185, 185);
+    }
+    
+    .sppiner{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .textCard{
         padding-top: 10px;
         text-align: left;
@@ -31,11 +49,27 @@
     .pie{
         height: 354px;
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        .graphicPie{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            height: 300px;
+
+            border: 1px solid red;
+            
+            .direita{
+                height: 200px;
+                // border: 1px solid red;
+            }
+            .esquerda{
+                border: 1px solid red;
+            }
+
+        }
     }
+
+
 
     .content{
         border: 1px solid red;

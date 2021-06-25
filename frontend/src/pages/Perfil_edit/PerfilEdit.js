@@ -7,6 +7,7 @@ import style from './PerfilEdit.module.scss';
 import { Header } from '../../components/Header';
 import { Sidebar } from '../../components/Sidebar/index';
 import { isAuthenticated, logout } from '../../components/auth/auth';
+import Modal from '../../components/Modal2/Modal';
 
 import Grid from "@material-ui/core/Grid";
 import TextField from '@material-ui/core/TextField';
@@ -43,6 +44,7 @@ const Perfil = () => {
     const [sobrenome, setSobrenome] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const [showModal, setShowModal] = useState(false);
 
     const [atualiza, setAtualiza] = useState(atualizaValues);
 
@@ -70,44 +72,44 @@ const Perfil = () => {
 
         console.log(values);
 
-        // if(values.new_name !== name && values.new_name !== ""){
-        //     atualiza.name = values.new_name;
-        // }else if(values.new_name === "" || values.new_name === name){
-        //     atualiza.name = name;
-        // }
+        if(values.new_name !== name && values.new_name !== ""){
+            atualiza.name = values.new_name;
+        }else if(values.new_name === "" || values.new_name === name){
+            atualiza.name = name;
+        }
 
-        // if(values.new_sobrenome !== sobrenome && values.new_sobrenome !== ""){
-        //     atualiza.sobrenome = values.new_sobrenome;
-        // }else if(values.new_sobrenome === "" || values.new_sobrenome === sobrenome){
-        //     atualiza.sobrenome = sobrenome
-        // }
+        if(values.new_sobrenome !== sobrenome && values.new_sobrenome !== ""){
+            atualiza.sobrenome = values.new_sobrenome;
+        }else if(values.new_sobrenome === "" || values.new_sobrenome === sobrenome){
+            atualiza.sobrenome = sobrenome
+        }
 
-        // if(values.new_email !== email && values.new_email !== ""){
-        //     atualiza.email = values.new_email;
-        // }else if(values.new_email === "" || values.new_email === email){
-        //     atualiza.email = email;
-        // }
+        if(values.new_email !== email && values.new_email !== ""){
+            atualiza.email = values.new_email;
+        }else if(values.new_email === "" || values.new_email === email){
+            atualiza.email = email;
+        }
 
-        // console.log(atualiza.name);
-        // console.log(atualiza.sobrenome);
-        // console.log(atualiza.email);
+        console.log(atualiza.name);
+        console.log(atualiza.sobrenome);
+        console.log(atualiza.email);
 
-        // let dados = {
-        //     nome_pessoa: atualiza.name,
-        //     sobrenome: atualiza.sobrenome,
-        //     email: atualiza.email,
-        //     senha: senha,
-        //     data_nascimento: dataNascimento
-        // }
+        let dados = {
+            nome_pessoa: atualiza.name,
+            sobrenome: atualiza.sobrenome,
+            email: atualiza.email,
+            senha: senha,
+            data_nascimento: dataNascimento
+        }
 
-        // console.log(dados);
+        console.log(dados);
 
-        // axios.put(`http://localhost:5000/api/cadastro/${isAuthenticated()}`, dados)
-        //     .then((response) => {
-        //         console.log(response.data.message);
-        //     });
+        axios.put(`http://localhost:5000/api/cadastro/${isAuthenticated()}`, dados)
+            .then((response) => {
+                console.log(response.data.message);
+            });
 
-        // console.log("-------------------------");
+        console.log("-------------------------");
 
     }
 
@@ -215,7 +217,7 @@ const Perfil = () => {
                             </CardBody>
 
                             <CardFooter chart className={style.footer}>
-                                <button className={style.save} type="submit">Salvar</button>
+                                <button className={style.save} type="submit" onClick={() => setShowModal(true)}>Salvar</button>
                                 
                                 <button className={style.cancel} onClick={voltar_para_dashboard}>Cancelar</button>
                             </CardFooter>
@@ -223,6 +225,14 @@ const Perfil = () => {
                     </form>
                 </GridItem>
             </GridContainer>
+            <div>
+                {showModal ?
+                    <Modal onClose={() => setShowModal(false)} text={'saved'}>
+                        <h1>Salvando informações</h1>
+                    </Modal>
+                : ''
+                }
+            </div>
             
 
             {/* <div>

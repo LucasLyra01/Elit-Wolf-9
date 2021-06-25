@@ -11,12 +11,15 @@ function Navbar() {
   const { pathname } = useLocation();
 
   const [sidebar, setSidebar] = useState(false);
+  const [verdadeiro, setVerdadeiro] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
 
+  console.log(pathname);
+
   return (
     <>
-    {pathname !== '/' ? 
+    {(pathname !== '/') ?
       <IconContext.Provider value={{ color: '#000'}}>
         <div className='navbar'>
           <Link to='#' className='menu-bars'>
@@ -36,7 +39,6 @@ function Navbar() {
                   <Link to={item.path} className={`${'btnNavigation'} ${pathname === item.path ? 'isActive' : ''}`}>
                     {item.icon}
                     <span>{item.title}</span>
-                    
                   </Link>
                 </li>
                 

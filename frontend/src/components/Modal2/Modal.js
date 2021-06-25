@@ -59,7 +59,7 @@ const Modal = ({ id = 'modal', onClose = () => {}, children, text }) => {
                 <Grid item xs={12} sm={12} md={12}>
                     <Card chart className={style.borderRadius}>
                         <CardHeader color="info" stats icon>
-                            <CardIcon color={text === 'sair' ? "danger" : 'info'}>
+                            <CardIcon color={text === 'sair' ? "danger" : 'success'}>
                                 <Info/>
                             </CardIcon>
                         </CardHeader>
@@ -67,8 +67,8 @@ const Modal = ({ id = 'modal', onClose = () => {}, children, text }) => {
                             {children}
                         </CardBody>
                         <CardFooter chart>
-                            <button className={style.botoes} color="danger" onClick={cancelar}>Cancelar</button>
-                            <button className={style.botoes} color="danger" onClick={sair_da_aplicação}>Sair</button>
+                            <button onClick={cancelar}>Cancelar</button>
+                            <button className={style.botaoSair} onClick={sair_da_aplicação}>Sair</button>
                         </CardFooter>
                     </Card>
                 </Grid>

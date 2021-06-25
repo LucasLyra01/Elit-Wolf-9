@@ -1,3 +1,6 @@
+
 const data = new Date();
 
-console.log(data.toLocaleDateString());
+const hora = data.getHours();
+
+console.log(hora);
