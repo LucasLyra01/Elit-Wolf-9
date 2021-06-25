@@ -14,6 +14,9 @@ No primeiro terminal você irá rodar o servidor de banco de dados, mas para iss
 
 Em seguida:
 
+### `npm install`
+
+Depois dos pacotes instalados:
 ### `npm run dev`
 
 Com o servidor de banco de dados rodando, vamos para o outro terminal
@@ -22,6 +25,10 @@ Em seguida, entre na pasta para rodar o frontend com o comando:
 ### `cd frontend`
 
 Logo após entrar na pasta, digite o comando: 
+
+### `npm install`
+
+Depois dos pacotes instalados:
 
 ### `npm start`
 
