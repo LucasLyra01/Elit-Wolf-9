@@ -50,9 +50,6 @@ const Dashboard = () => {
 
     const lista_completa = [];
     const [lista, setLista] = useState([]);
-    const [listaCALL, setListaCALL] = useState(0);
-    const [listaPUT, setListaPUT] = useState(0);
-    const [listaDoji, setListaDoji] = useState(0);
 
     const [showSppiner, setShowSpinner] = useState(true);
 
@@ -112,9 +109,6 @@ const Dashboard = () => {
 
                                 lista_completa.sort();
                                 setLista(lista_completa);
-                                setListaCALL(call);
-                                setListaPUT(put);
-                                setListaDoji(doji);
                                 setPorcentagemCall( ( (call * 100 ) / (call + put + doji) ) );
                                 setPorcentagemPut( ( (put * 100) / (call + put + doji) ) );
                                 if(doji === 0){

@@ -4,9 +4,6 @@ import { useHistory } from 'react-router-dom';
 import { loginToken } from '../auth/auth';
 import axios from 'axios';
 
-import styles from './styles.module.scss';
-
-
 const Google = (props) => {
 
     let history = useHistory();
@@ -15,7 +12,7 @@ const Google = (props) => {
 
         let error = response.error;
 
-        if(error == 'popup_closed_by_user'){
+        if(error === 'popup_closed_by_user'){
             console.log(response.error);
             return;
         }else{
@@ -27,14 +24,14 @@ const Google = (props) => {
                     id_google: response.profileObj.googleId
                 }
 
-                if(props.id == "login"){
+                if(props.id === "login"){
 
                     axios.get('http://localhost:5000/api/cadastrogoogle')
                     .then((logarGoogle) => {
-                        if(logarGoogle.data.status == "ok"){
+                        if(logarGoogle.data.status === "ok"){
                             let dados = logarGoogle.data.message;
                             for (let i = 0; i < dados.length; i++) {
-                                if(dados[i].email == dadosGoogle.email && dados[i].id_google == dadosGoogle.id_google){
+                                if(dados[i].email === dadosGoogle.email && dados[i].id_google === dadosGoogle.id_google){
                                     loginToken(dados[i]._id);
                                     history.push('/dashboard');
                                     return;
@@ -45,11 +42,11 @@ const Google = (props) => {
                     });
                 }
 
-                if(props.id == "cadastro"){
+                if(props.id === "cadastro"){
 
                     axios.post('http://localhost:5000/api/cadastrogoogle', dadosGoogle)
                     .then((cadastroGoogle) => {
-                        if(cadastroGoogle.data.status == "ok"){
+                        if(cadastroGoogle.data.status === "ok"){
                             alert(cadastroGoogle.data.message);
                             history.push('/');
                             return;

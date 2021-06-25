@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import style from './Perfil.module.scss';
 
-import { Header } from '../../components/Header';
-import { Sidebar } from '../../components/Sidebar/index';
-import { isAuthenticated, logout } from '../../components/auth/auth';
+import { isAuthenticated } from '../../components/auth/auth';
 
-import Grid from "@material-ui/core/Grid";
-
-import Button from "../../components/CustomButtons/Button";
 import Card from "../../components/Card/Card.js";
 import CardHeader from "../../components/Card/CardHeader.js";
 import CardIcon from "../../components/Card/CardIcon.js";
 import CardBody from "../../components/Card/CardBody.js";
 import CardFooter from "../../components/Card/CardFooter.js";
 import CustomInput from "../../components/CustomInput/CustomInput";
-import Danger from "../../components/Typography/Danger.js";
 import GridItem from "../../components/Grid/GridItem.js";
 import GridContainer from "../../components/Grid/GridContainer.js";
 
@@ -31,10 +25,7 @@ const Perfil = () => {
 
     const [name, setName] = useState('');
     const [dataNascimento, setDataNascimento] = useState('');
-    const [email, setEmail] = useState('');
     const [sobrenome, setSobrenome] = useState('');
-    const [numero, setNumero] = useState('');
-    const [deleteAccount, setDeleteAccount] = useState(false);
 
     useEffect(() => {
         if(count){
@@ -45,30 +36,13 @@ const Perfil = () => {
                         // console.log(dados);
                         setName(dados.nome_pessoa);
                         setSobrenome(dados.sobrenome);
-                        setEmail(dados.email);
                         setDataNascimento(dados.data_nascimento);
-                        setNumero(dados.numero);
                         setCount(false);
                 });
             }
             buscaDados();
         }
     });
-
-    function deletarConta(){
-
-        axios.delete(`http://localhost:5000/api/cadastro/${isAuthenticated()}`)
-            .then(async (response) => {
-                if(response.data.status === 'ok'){
-                    console.log(response.data.status);
-                    console.log(response.data.message);
-                    alert(response.data.message);
-                    await logout();
-                    history.push('/');
-                }
-            });
-
-    }
 
     let data = dataNascimento.split('/');
 
@@ -134,7 +108,7 @@ const Perfil = () => {
                                 </GridItem>
                                 <GridItem xs={12} sm={12} md={6}>
                                     <CustomInput 
-                                        labelText='Telefone'
+                                        labelText={"Telefone não informado"}
                                         id='telefone'
                                         formControlProps={{
                                             fullWidth: true

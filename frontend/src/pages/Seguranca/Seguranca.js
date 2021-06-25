@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import style from './Security.module.scss';
@@ -8,7 +7,6 @@ import { isAuthenticated } from '../../components/auth/auth';
 
 import TextField from '@material-ui/core/TextField';
 
-import Button from "../../components/CustomButtons/Button";
 import Card from "../../components/Card/Card.js";
 import CardHeader from "../../components/Card/CardHeader.js";
 import CardIcon from "../../components/Card/CardIcon.js";
@@ -18,7 +16,6 @@ import GridItem from "../../components/Grid/GridItem.js";
 import GridContainer from "../../components/Grid/GridContainer.js";
 
 import * as RiIcons from 'react-icons/ri';
-import * as IoIcons from 'react-icons/io5';
 
 const Seguranca = () => {
     

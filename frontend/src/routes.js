@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
 import { isAuthenticated } from '../src/components/auth/auth';
 
 import Login from './pages/Login/Login';

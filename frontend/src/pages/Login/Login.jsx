@@ -65,8 +65,6 @@ function initialState() {
 
 const Login = () => {
   
-  const [token, setToken] = useState('');
-
   let history = useHistory();
 
   if(isAuthenticated()){
@@ -82,11 +80,9 @@ const Login = () => {
       .then((response) => {
         let dados = response.data.message;
         for (let i = 0; i < dados.length; i++) {
-          if(dados[i].email == email && dados[i].senha == password){
+          if(dados[i].email === email && dados[i].senha === password){
             console.log("logado com sucesso");
             loginToken(dados[i]._id);
-            setToken(dados[i]._id);
-            // export default token;
             history.push('/dashboard');
             return;
           }
@@ -112,7 +108,7 @@ const Login = () => {
   function onSubmit(event) {
     event.preventDefault();
 
-    const { token } = Login(values);
+    Login(values);
 
   }
 

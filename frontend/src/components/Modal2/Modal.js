@@ -2,29 +2,21 @@ import React from 'react';
 import style from './styles.module.scss';
 import { useHistory } from 'react-router-dom';
 
-import Icon from "@material-ui/core/Icon";
 import Grid from "@material-ui/core/Grid"
-import { makeStyles } from '@material-ui/core/styles';
-import Warning from "@material-ui/icons/Warning";
+
 import Info from "@material-ui/icons/Info";
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
-
-import Button from "../../components/CustomButtons/Button";
 import Card from "../../components/Card/Card.js";
 import CardHeader from "../../components/Card/CardHeader";
 import CardBody from "../../components/Card/CardBody";
 import CardIcon from "../../components/Card/CardIcon";
 import CardFooter from "../../components/Card/CardFooter";
-import Danger from "../../components/Typography/Danger";
 import styles_material from "../../assets/jss/material-dashboard-react/views/dashboardStyle.js";
-import { grid } from '@material-ui/system';
 import { logout } from '../auth/auth';
-
-const useStyles = makeStyles(styles_material);
 
 const Modal = ({ id = 'modal', onClose = () => {}, children, text }) => {
 
-    const classes = useStyles();
     const history = useHistory();
     // const { children } = props;
 
@@ -34,8 +26,12 @@ const Modal = ({ id = 'modal', onClose = () => {}, children, text }) => {
         }
     }
 
-    const clique_no_X = (e) => {
+    const primeiro_login = () => {
         history.push('/');
+    }
+
+    const cadastrar_novamente = () => {
+        onClose()
     }
 
     if(text === 'sair'){
@@ -59,16 +55,29 @@ const Modal = ({ id = 'modal', onClose = () => {}, children, text }) => {
                 <Grid item xs={12} sm={12} md={12}>
                     <Card chart className={style.borderRadius}>
                         <CardHeader color="info" stats icon>
-                            <CardIcon color={text === 'sair' ? "danger" : 'success'}>
-                                <Info/>
+                            <CardIcon color={text === 'sair' ? "danger" : text === 'cadastrook' ? 'success' : 'danger'}>
+                                {text === 'sair' ? <Info/> : text === 'cadastrook' ? <CheckCircleOutlineIcon /> : <Info />}
                             </CardIcon>
                         </CardHeader>
                         <CardBody className={styles_material.content}>
                             {children}
                         </CardBody>
-                        <CardFooter chart>
-                            <button onClick={cancelar}>Cancelar</button>
-                            <button className={style.botaoSair} onClick={sair_da_aplicação}>Sair</button>
+                        <CardFooter chart className={style.center}>
+                            {text === 'sair' ? 
+                                <>
+                                    <button onClick={cancelar}>Cancelar</button>
+                                    <button className={style.botaoSair} onClick={sair_da_aplicação}>Sair</button>
+                                </>
+                            : text === 'cadastrook' ?
+                                <>
+                                    <button onClick={primeiro_login}>Realizar Login</button>
+                                </>
+                            : text === 'cadastroError' ?
+                                <>
+                                    <button onClick={cadastrar_novamente}>Cadastrar Novamente</button>
+                                </>
+                            : ''
+                            }
                         </CardFooter>
                     </Card>
                 </Grid>

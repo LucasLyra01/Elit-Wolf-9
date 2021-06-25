@@ -11,15 +11,12 @@ function Navbar() {
   const { pathname } = useLocation();
 
   const [sidebar, setSidebar] = useState(false);
-  const [verdadeiro, setVerdadeiro] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
 
-  console.log(pathname);
-
   return (
     <>
-    {(pathname !== '/') ?
+    {(pathname !== '/' && pathname !== '/cadastro') ?
       <IconContext.Provider value={{ color: '#000'}}>
         <div className='navbar'>
           <Link to='#' className='menu-bars'>

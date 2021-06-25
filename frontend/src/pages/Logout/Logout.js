@@ -1,18 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-import { logout } from '../../components/auth/auth';
-import { useHistory, useLocation } from 'react-router-dom';
 import Modal from '../../components/Modal2/Modal';
-
 
 const Logout = () => {
 
     const [ isModalVisibel, setIsModalVisible ] = useState(true);
-
-    const history = useHistory();
-    const { pathname } = useLocation();
-    // logout();
-    // history.push('/')
 
     return(
 
