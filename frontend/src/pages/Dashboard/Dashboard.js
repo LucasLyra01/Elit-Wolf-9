@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Pie, Bar } from 'react-chartjs-2';
+import { isAuthenticated } from '../../components/auth/auth';
+
 import { makeStyles } from "@material-ui/core/styles";
 import AccessTime from "@material-ui/icons/AccessTime";
 import * as BsIcons from "react-icons/bs";
@@ -47,6 +49,8 @@ const Dashboard = () => {
     const [porcentagemCall, setPorcentagemCall] = useState(0);
     const [porcentagemPut, setPorcentagemPut] = useState(0);
     const [porcentagemDoji, setPorcentagemDoji] = useState(0);
+
+    const [name, setName] = useState();
 
     const lista_completa = [];
     const [lista, setLista] = useState([]);
@@ -128,6 +132,10 @@ const Dashboard = () => {
                             setCount(false);
                         }
                     })
+                await axios.get(`http://localhost:5000/api/cadastro/${isAuthenticated()}`)
+                    .then((response) => {
+                        setName(response.data.message.nome_pessoa);
+                    })
             })();
         }
     });
@@ -207,7 +215,7 @@ const Dashboard = () => {
                                 <BsIcons.BsBarChartFill />
                             </CardIcon>
                             <div className={style.textCard}>
-                                <h2>Olá, Lucas</h2>
+                                <h2>Olá, {name}</h2>
                                 <h5>Tenha {bomDia} de investimentos</h5>
                             </div>
                         </CardHeader>
